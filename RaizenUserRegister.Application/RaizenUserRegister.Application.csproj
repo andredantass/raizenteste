@@ -1,0 +1,19 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="9.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\RaizenUserRegister.Application.Abastraction\RaizenUserRegister.Application.Abstraction.csproj" />
+    <ProjectReference Include="..\RaizenUserRegister.Domain\RaizenUserRegister.Domain.csproj" />
+    <ProjectReference Include="..\RaizenUserRegister.Infra.Data\RaizenUserRegister.Infra.Data.csproj" />
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,127 @@
+<div class="container p-3">
+  <div class="card mx-2 mt-n3 shadow-lg formuser">
+    <div class="card-body">
+      <h5 class="card-title mb-3 text-primary text-uppercase">CADASTRAR USUÁRIO</h5>
+      <form [formGroup]="userform">
+        <div class="row">
+          <div class="col">
+            <div class="form-floating mb-3">
+              <input type="text" class="form-control" id="name" formControlName="name" [ngModel]="userEdit.name" placeholder="name">
+              <label for="name">Nome</label>
+              <div *ngIf="userform.controls['name']?.invalid && (userform.controls['name']?.dirty || userform.controls['name']?.touched)" class="invalid">
+                Valor Obrigatório
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="form-floating mb-3">
+              <input type="text" class="form-control" id="secondname" formControlName="secondname" [ngModel]="userEdit.secondName" placeholder="secondname">
+              <label for="secondname">Sobrenome</label>
+              <div *ngIf="userform.controls['secondname']?.invalid && (userform.controls['secondname']?.dirty || userform.controls['secondname']?.touched) " class="invalid">
+                Valor Obrigatório
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <div class="form-floating mb-3">
+              <input type="text" class="form-control" id="email" formControlName="email" [ngModel]="userEdit.email"  placeholder="email">
+              <label for="email">Email</label>
+              <div *ngIf="userform.controls['email']?.invalid && (userform.controls['email']?.dirty || userform.controls['email']?.touched)" class="invalid">
+                Valor Obrigatório
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="form-floating mb-3">
+              <input type="text" class="form-control" id="document" minlength="0" maxlength="11" formControlName="document" [ngModel]="userEdit.document" placeholder="document" onlyNumber>
+              <label for="document">CPF</label>
+              <div *ngIf="userform.controls['document']?.invalid && (userform.controls['document']?.dirty || userform.controls['document']?.touched) " class="invalid">
+                Valor Obrigatório
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="form-floating mb-3">
+              <input type="text" class="form-control" id="zipcode" minlength="0" maxlength="8" formControlName="zipcode" [ngModel]="userEdit.address.cep" placeholder="zipcode" onlyNumber>
+              <label for="zipcode">CEP</label>
+              <div *ngIf="userform.controls['zipcode']?.invalid && (userform.controls['zipcode']?.dirty || userform.controls['zipcode']?.touched) " class="invalid">
+                Valor Obrigatório
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <div class="form-floating mb-3">
+              <input type="text" class="form-control" id="nickname" formControlName="nickname" [ngModel]="userEdit.nickname" placeholder="nickname">
+              <label for="nickname">Usuário</label>
+              <div *ngIf="userform.controls['nickname']?.invalid && (userform.controls['nickname']?.dirty || userform.controls['nickname']?.touched)" class="invalid">
+                Valor Obrigatório
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="form-floating mb-3">
+              <input type="password" min="0" max="8" class="form-control" id="password" formControlName="password" [ngModel]="userEdit.password" placeholder="password">
+              <label for="password">Senha</label>
+              <div *ngIf="userform.controls['password']?.invalid && (userform.controls['password']?.dirty || userform.controls['password']?.touched) " class="invalid">
+                Valor Obrigatório
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="buttons">
+          <button type="button" class="btn btn-primary" (click)="registerUser()">
+            {{this.buttonValue}}</button>
+          <button type="button" class="btn btn-danger" (click)="resetForm()">Apagar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+  <div class="container p-3">
+    <div class="card mx-2 mt-n3 shadow-lg griduser">
+      <div class="card-body">
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">Nome</th>
+              <th scope="col">Sobrenome</th>
+              <th scope="col">CPF</th>
+              <th scope="col">Rua</th>
+              <th scope="col">Bairro</th>
+              <th scope="col">Cidade</th>
+              <th scope="col">CEP</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let user of users">
+              <td>{{user.name
+            }}</td>
+            <td>{{user.secondName}}</td>
+            <td>{{user.document}}</td>
+            <td>{{user.address.logradouro}}</td>
+            <td>{{user.address.bairro}}</td>
+            <td>{{user.address.localidade}}</td>
+            <td>{{user.address.cep}}</td>
+            <td>
+              <button class="btn btn-success btn-sm" (click)="editUser(user)">
+                EDIT
+              </button>
+              <button class="btn btn-danger btn-sm" (click)="deleteUser(user)">
+                X
+              </button>
+
+            </td>
+            </tr>
+            <tr>
+              <td colspan="8" align="center"></td>
+            </tr>
+            </tbody>
+            </table>
+</div>
+    </div>
+  </div>
+</div>
